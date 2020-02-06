@@ -1,0 +1,11 @@
+<section class="admin-categories-index">
+<div class="well">
+<%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
+</div>
+<h1>Available Categories</h2>
+  <table class="table table-bordered">
+    <tbody>
+      <%= render @categories %>
+    </tbody>
+  </table>
+</section>
