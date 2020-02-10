@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
         @user1 = User.new(:email => 'julie-nguyeN@live.com', :password => '456')
         @user1.save!
         @user2 = User.new(:first_name => 'Julie', :last_name => 'Nguyen', :email => 'julie-nguyeN@live.com', :password => '123', :password_confirmation => '123')
-        expect(User.where(email: 'julie-nguyen@live.com')).to exist
+        expect(@user2).to_not be_valid
       end
     end
   end
