@@ -14,14 +14,22 @@ RSpec.describe User, type: :model do
         @user = User.new(:first_name => 'Julie', :last_name => 'Nguyen', :email => 'julie-nguyen@live.com', :password => '123', :password_confirmation => '456')
         expect(@user).to_not be_valid
       end
+
+  
+      it 'should have a password length of atleast 2' do
+      end
     end
 
-    describe '#email' do
-      it 'should not create a user with an existing email' do
-        @user1 = User.new(:email => 'julie-nguyeN@live.com', :password => '456')
-        @user1.save!
-        @user2 = User.new(:first_name => 'Julie', :last_name => 'Nguyen', :email => 'julie-nguyeN@live.com', :password => '123', :password_confirmation => '123')
-        expect(@user2).to_not be_valid
+    describe '.authenticate_with_credentials' do
+      it 'cannot create a user with the same email' do
+        @user = User.create(:first_name => 'Julie', :last_name => 'Nguyen', :email => 'julie-nguyen@live.com', :password => '123', :password_confirmation => '123')
+
+        @user2 = User.create(:first_name => 'Julie', :last_name => 'Nguyen', :email => 'julie-nguyen@live.com', :password => '123', :password_confirmation => '123')
+
+        expect(@user2).to be_nil
+      end
+
+      it 'cannot create a user with the same email - not case sensitive' do
       end
     end
   end

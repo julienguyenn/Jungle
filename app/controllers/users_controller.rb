@@ -5,6 +5,13 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+     
+    if User.find_by_email(params[:email]) 
+      return nil
+
+    if !User.find_by_email(params[:email])
+      return user
+
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
