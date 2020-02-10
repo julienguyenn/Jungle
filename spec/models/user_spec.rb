@@ -27,6 +27,14 @@ RSpec.describe User, type: :model do
       end
     end
 
+        
+    describe '#last_name' do
+      it 'should be assigned a first name when creating a product' do
+        @user=User.new(first_name:'julie', last_name:nil, email: 'julie-nguyen@live.com')
+        expect(@user).to_not be_valid
+      end
+    end
+
     describe '#email' do
       it 'cannot create a user with the same email' do
         @user = User.create(:first_name => 'Julie', :last_name => 'Nguyen', :email => 'julie-nguyen@live.com', :password => '123', :password_confirmation => '123')
